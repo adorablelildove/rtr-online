@@ -19,15 +19,25 @@ body{
     display: flex;
 }
 
-.sidebar{
+.sidebar.show{
+    color: white;
     width: 300px;
     flex-shrink: 0;
     background-color: #292A30;
     height: 100%;
-    overflow-y: auto;
+    transition: width 350ms;
+}
+
+.sidebar.close{
+    background-color: #292A30;
+    height: 100%;
+    width: 0px;
+    transition: 350ms;
+    overflow: hidden;
 }
 
 .expand-btn, .collapse-btn{
+    background-color: #292A30;
     border-radius: 5px 5px 0 0;
     position: absolute;
     color: white;
@@ -35,15 +45,35 @@ body{
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
     transform: rotate(90deg);
+    cursor: pointer;
 }
 
-.expand-btn{
+.expand-btn.show{
+    margin-left: -10px;
     padding: 6px;
+    z-index: 1;
+    transition: margin-left 350ms;
+}
+.expand-btn.close{
+    margin-left: 290px;
+    padding: 6px;
+    z-index: -1;
+    transition: margin-left 350ms;
 }
 
-.collapse-btn{
+.collapse-btn.show{
     font-size: larger;
     padding: 4px 15px 4px 15px;
+    margin-left: 290px;
+    transition: margin-left 350ms;
+}
+
+.collapse-btn.close{
+    font-size: larger;
+    margin-left: -10px;
+    z-index: -1;
+    padding: 4px 15px 4px 15px;
+    transition: 350ms;
 }
 /*----------------------------------------------
     ## Global
@@ -58,6 +88,10 @@ body{
 
 .left-0{
     margin-left: -10px;
+}
+
+.left-100{
+    margin-left: -100px;
 }
 
 .f-12{
