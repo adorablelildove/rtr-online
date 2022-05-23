@@ -9,7 +9,6 @@ html, body{
 }
 
 body{
-    font-family: arial;
     font-size: 16px;
     background-image: url(map.png);
     background-repeat: no-repeat;
@@ -18,7 +17,6 @@ body{
 
 .main{
     display: flex;
-    height: 100vh;
 }
 
 .sidebar{
@@ -29,26 +27,52 @@ body{
     overflow-y: auto;
 }
 
-button{
-    background-color: #292A30;
-    border-radius: 0 5px 5px 0;
-    color: white;
-    border: none;
-    font-size: 22px;
-    padding: 15px 3px 10px 0;
-    margin-left: 300px;
+.expand-btn, .collapse-btn{
+    border-radius: 5px 5px 0 0;
     position: absolute;
+    color: white;
     top: 50%;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
+    transform: rotate(90deg);
 }
 
-@media all and (max-width: 650px) {
-    .sidebar{
-        width: 200px;
-    }
-    
-    button{
-        margin-left: 200px;
-    }
+.expand-btn{
+    padding: 6px;
 }
+
+.collapse-btn{
+    font-size: larger;
+    padding: 4px 15px 4px 15px;
+}
+/*----------------------------------------------
+    ## Global
+----------------------------------------------*/
+.h-100vh{
+    height: 100vh;
+}
+
+.left-290{
+    margin-left: 290px;
+}
+
+.left-0{
+    margin-left: -10px;
+}
+
+.f-12{
+    font-size: 12px;
+}
+
+.f-poppins{
+    font-family: "Poppins", sans-serif;
+}
+
+.spacing{
+    letter-spacing: 1px;
+}
+
+.bg-main{
+    background-color: #292A30;
+}
+
