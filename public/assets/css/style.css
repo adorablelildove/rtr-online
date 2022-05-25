@@ -1,3 +1,15 @@
+:root{
+    /* Font-color */
+    --yellow-color: #FEC32F;
+    --blue-color: #0E3D64;
+    --grey-color: #292A30;
+
+    /* Font-family */
+    --poppins: "Poppins", sans-serif;
+    --roboto: "Roboto", sans-serif;
+    --alata: "Alata", sans-serif;
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -20,24 +32,27 @@ body{
 }
 
 .sidebar.show{
+    margin-left: 0;
     color: white;
     width: 300px;
     flex-shrink: 0;
-    background-color: #292A30;
+    background-color: var(--grey-color);
     height: 100%;
-    transition: width 350ms;
+    transition: ease 350ms;
+    box-shadow: 5px 0 25px rgba(0,0,0,0.5);
 }
 
 .sidebar.close{
-    background-color: #292A30;
+    background-color: var(--grey-color);
+    width: 300px;
     height: 100%;
-    width: 0px;
-    transition: 350ms;
+    margin-left: -440px;
+    transition: ease 350ms;
     overflow: hidden;
 }
 
 .expand-btn, .collapse-btn{
-    background-color: #292A30;
+    background-color: var(--grey-color);
     border-radius: 5px 5px 0 0;
     position: absolute;
     color: white;
@@ -46,26 +61,37 @@ body{
     transform: translateY(-50%);
     transform: rotate(90deg);
     cursor: pointer;
+    box-shadow: 3px -2px 25px rgba(0,0,0,0.4);
+}
+
+.expand-btn a{
+    color: white;
+    text-decoration: none;
+}
+
+.expand-btn a:hover, .collapse-btn a:hover{
+    color: white;
+    opacity: 0.5;
 }
 
 .expand-btn.show{
     margin-left: -10px;
     padding: 6px;
     z-index: 1;
-    transition: margin-left 350ms;
+    transition: ease-out 350ms;
 }
 .expand-btn.close{
     margin-left: 290px;
     padding: 6px;
     z-index: -1;
-    transition: margin-left 350ms;
+    transition: ease-out 350ms;
 }
 
 .collapse-btn.show{
     font-size: larger;
     padding: 4px 15px 4px 15px;
     margin-left: 290px;
-    transition: margin-left 350ms;
+    transition: ease-out 350ms;
 }
 
 .collapse-btn.close{
@@ -73,13 +99,90 @@ body{
     margin-left: -10px;
     z-index: -1;
     padding: 4px 15px 4px 15px;
-    transition: 350ms;
+    transition: ease-out 350ms;
 }
+
+.header-shadow{
+    background-color: rgb(0, 0, 0, 0.6);
+}
+
+.info .col{
+    cursor: pointer;
+}
+
+.info .col:hover{
+    opacity: 0.6;
+    transition: 250ms;
+}
+
+.rtr{
+    margin: -5px;
+    padding: 0;
+}
+
+.main-menu > .col{
+    cursor: pointer;
+    height: 5vh;
+    transition: color 350ms;
+}
+
+.main-menu > .col:hover{
+    color: var(--yellow-color);
+    border-bottom: 2px solid var(--yellow-color);
+}
+
+.add-data-container-close.col.row{
+    width: 0;
+    height: 0;
+}
+
+.sub-menu{
+    border-bottom: solid rgb(0, 0, 0, 0.1) 1px;
+    background-color: var(--grey-color);
+    height: 50px;
+    font-family: var(--alata);
+    font-size: 14px;
+    align-items: center;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: ease-in-out 250ms;
+}
+
+.sub-menu:hover{
+    background-color: rgb(0, 0, 0, 0.4);
+}
+
+
+
 /*----------------------------------------------
     ## Global
 ----------------------------------------------*/
 .h-100vh{
     height: 100vh;
+}
+
+.h-80vh{
+    height: 80vh;
+}
+
+.h-20vh{
+    height: 20vh;
+}
+
+.h-15vh{
+    height: 15vh;
+}
+
+.h-10vh{
+    height: 10vh;
+}
+
+.h-5vh{
+    height: 5vh;
+}
+
+.h-8vh{
+    height: 8vh;
 }
 
 .left-290{
@@ -94,19 +197,79 @@ body{
     margin-left: -100px;
 }
 
+.f-10{
+    font-size: 10px;
+}
+
 .f-12{
     font-size: 12px;
+}
+
+.f-14{
+    font-size: 14px;
 }
 
 .f-poppins{
     font-family: "Poppins", sans-serif;
 }
 
+.f-roboto{
+    font-family: 'Roboto', sans-serif;
+}
+
 .spacing{
     letter-spacing: 1px;
 }
 
-.bg-main{
-    background-color: #292A30;
+.align-center{
+    align-items: center;
+    text-align: center;
 }
 
+.align-center-l{
+    align-items: center;
+    text-align: left;
+}
+
+.align-r{
+    align-items: right;
+    text-align: right;
+}
+
+.bg-main{
+    background-color: var(--grey-color);
+}
+
+.bg-yellow{
+    background-color: yellow;
+}
+
+.bg-green{
+    background-color: green;
+}
+
+.bg-blue{
+    background-color: blue;
+}
+
+.bg-red{
+    background-color: red;
+}
+
+.bg-black{
+    background-color: black;
+}
+
+.bg-header{
+    background-image: url(sidebar-header.jpg);
+    background-size: cover;
+    background-position-y: -30px;
+}
+
+.op-60{
+    opacity: 0.60;
+}
+
+.op-100{
+    opacity: 1;
+}
