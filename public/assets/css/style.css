@@ -22,13 +22,25 @@ html, body{
 
 body{
     font-size: 16px;
-    background-image: url(map.png);
+    /* background-image: url(map.png);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover; */
 }
 
+/* MAP */
+.map{
+    z-index: -1;
+    position: absolute;
+    margin: 0;
+}
+
+/* SIDEBAR */
+
 .main{
+    width: 100vh;
+    height: 100vh;
     display: flex;
+    z-index: 10;
 }
 
 .sidebar.show{
@@ -111,7 +123,7 @@ body{
 }
 
 .info .col:hover{
-    opacity: 0.6;
+    color: var(--yellow-color);
     transition: 250ms;
 }
 
@@ -120,13 +132,17 @@ body{
     padding: 0;
 }
 
-.main-menu > .col{
+.main-menu{
     cursor: pointer;
     height: 5vh;
     transition: color 350ms;
 }
 
-.main-menu > .col:hover{
+.main-menu:hover{
+    color: var(--yellow-color);
+}
+
+.main-menu.show{
     color: var(--yellow-color);
     border-bottom: 2px solid var(--yellow-color);
 }

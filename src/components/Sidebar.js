@@ -48,10 +48,10 @@ const Sidebar = () => {
               </div>
               <div className='row'>
                 <div className='col'>
-                  <div className='main-menu row h-5vh align-center f-14 f-roboto'>
-                    <div className='col' onClick={() => {setAddDataIsOpen(true); setLayerListIsOpen(false); setLegendIsOpen(false)}}>ADD DATA</div>
-                    <div className='col' onClick={() => {setAddDataIsOpen(false); setLayerListIsOpen(true); setLegendIsOpen(false)}}>LAYER LIST</div>
-                    <div className='col' onClick={() => {setAddDataIsOpen(false); setLayerListIsOpen(false); setLegendIsOpen(true)}}>LEGEND</div>
+                  <div className='row h-5vh align-center f-14 f-roboto'>
+                    <div className={addDataIsOpen ? "main-menu show col" : "main-menu col"} onClick={() => {setAddDataIsOpen(true); setLayerListIsOpen(false); setLegendIsOpen(false)}}>ADD DATA</div>
+                    <div className={layerListIsOpen ? "main-menu show col" : "main-menu col"} onClick={() => {setAddDataIsOpen(false); setLayerListIsOpen(true); setLegendIsOpen(false)}}>LAYER LIST</div>
+                    <div className={legendIsOpen ? "main-menu show col" : "main-menu col"} onClick={() => {setAddDataIsOpen(false); setLayerListIsOpen(false); setLegendIsOpen(true)}}>LEGEND</div>
                   </div>
                 </div>
               </div>
