@@ -27,30 +27,26 @@ body{
     background-size: cover; */
 }
 
-/* MAP */
-.map{
-    z-index: -1;
-    position: absolute;
+/* SIDEBAR */
+.main{
     margin: 0;
+    display: flex;
+    position: absolute;
 }
 
-/* SIDEBAR */
-
-.main{
-    width: 100vh;
-    height: 100vh;
-    display: flex;
-    z-index: 10;
+.bg-header{
+    background-image: url(sidebar-header.jpg);
+    background-size: cover;
+    background-position-y: -30px;
 }
 
 .sidebar.show{
     margin-left: 0;
     color: white;
     width: 300px;
-    flex-shrink: 0;
     background-color: var(--grey-color);
     height: 100%;
-    transition: ease 350ms;
+    transition: 350ms;
     box-shadow: 5px 0 25px rgba(0,0,0,0.5);
 }
 
@@ -58,8 +54,8 @@ body{
     background-color: var(--grey-color);
     width: 300px;
     height: 100%;
-    margin-left: -440px;
-    transition: ease 350ms;
+    margin-left: -300px;
+    transition: 350ms;
     overflow: hidden;
 }
 
@@ -90,20 +86,20 @@ body{
     margin-left: -10px;
     padding: 6px;
     z-index: 1;
-    transition: ease-out 350ms;
+    transition: 350ms;
 }
 .expand-btn.close{
     margin-left: 290px;
     padding: 6px;
     z-index: -1;
-    transition: ease-out 350ms;
+    transition: 350ms;
 }
 
 .collapse-btn.show{
     font-size: larger;
     padding: 4px 15px 4px 15px;
     margin-left: 290px;
-    transition: ease-out 350ms;
+    transition: 350ms;
 }
 
 .collapse-btn.close{
@@ -111,7 +107,7 @@ body{
     margin-left: -10px;
     z-index: -1;
     padding: 4px 15px 4px 15px;
-    transition: ease-out 350ms;
+    transition: 350ms;
 }
 
 .header-shadow{
@@ -168,7 +164,17 @@ body{
     background-color: rgb(0, 0, 0, 0.4);
 }
 
+.tools.sidebar-show, .tools.sidebar-close{
+    position: absolute;
+    transition: 350ms;
+    width : max-content
+}
 
+/* ADD DATA - RTR */
+.submenu-content{
+    background-color: white;
+    color: black;
+}
 
 /*----------------------------------------------
     ## Global
@@ -211,6 +217,14 @@ body{
 
 .left-100{
     margin-left: -100px;
+}
+
+.left-330{
+    margin-left: 330px;
+}
+
+.left-30{
+    margin-left: 30px;
 }
 
 .f-10{
@@ -274,12 +288,6 @@ body{
 
 .bg-black{
     background-color: black;
-}
-
-.bg-header{
-    background-image: url(sidebar-header.jpg);
-    background-size: cover;
-    background-position-y: -30px;
 }
 
 .op-60{

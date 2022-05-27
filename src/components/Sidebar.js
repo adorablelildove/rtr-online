@@ -3,6 +3,7 @@ import * as FaIcons from 'react-icons/fa'
 import AddData from './sidebar-components/AddData';
 import LayerList from './sidebar-components/LayerList';
 import Legend from './sidebar-components/Legend';
+import MapContainer from './MapContainer';
 
 const Sidebar = () => {
   // Expand-collapse animation sidebar
@@ -18,10 +19,17 @@ const Sidebar = () => {
   // Change main menus 
   const [addDataIsOpen, setAddDataIsOpen] = useState(true);  
   const [layerListIsOpen, setLayerListIsOpen] = useState(false);
-  const [legendIsOpen, setLegendIsOpen] = useState(false);  ;  
+  const [legendIsOpen, setLegendIsOpen] = useState(false); 
+
+  // Expand-collapse submenu contents
+  const [rtrIsOpen, setRtrIsOpen] = useState(true);
+  const [simpulIsOpen, setSimpulIsOpen] = useState(true);
+  const [cariIsOpen, setCariIsOpen] = useState(true);
+  const [urlIsOpen, setUrlIsOpen] = useState(true);
+  const [fileIsOpen, setFileIsOpen] = useState(true);
 
   return (
-    <div className='main h-100vh'>
+      <div className='main h-100vh'>
         <td className={style} onClick={() => {setIsOpen(!isOpen); expanded()}}>
           <a className='f-12 f-poppins spacing'>MENU</a>
         </td>
@@ -66,10 +74,11 @@ const Sidebar = () => {
           <a><FaIcons.FaCaretDown /></a>
         </td>
         {/* responsive sidebar end */}
-        
-        <div className='container'>
-            <h1>ini container</h1>
-        </div>
+    <div className={isOpen ? "tools sidebar-show left-330 bg-white" : "tools sidebar-close left-30 bg-white"}>
+      <div className='tools'>
+        <h1>tools container</h1>
+      </div>
+    </div>
     </div>
   )
 }
