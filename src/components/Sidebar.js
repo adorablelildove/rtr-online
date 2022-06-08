@@ -4,6 +4,7 @@ import AddData from './sidebar-components/AddData';
 import LayerList from './sidebar-components/LayerList';
 import Legend from './sidebar-components/Legend';
 import MapContainer from './MapContainer';
+import Modal from 'react-modal';
 
 const Sidebar = () => {
   // Expand-collapse animation sidebar
@@ -21,12 +22,12 @@ const Sidebar = () => {
   const [layerListIsOpen, setLayerListIsOpen] = useState(false);
   const [legendIsOpen, setLegendIsOpen] = useState(false); 
 
-  // Expand-collapse submenu contents
-  const [rtrIsOpen, setRtrIsOpen] = useState(true);
-  const [simpulIsOpen, setSimpulIsOpen] = useState(true);
-  const [cariIsOpen, setCariIsOpen] = useState(true);
-  const [urlIsOpen, setUrlIsOpen] = useState(true);
-  const [fileIsOpen, setFileIsOpen] = useState(true);
+  // Info Modal
+  const [infoIsOpen, setInfoIsOpen] = useState(false);
+
+  function toggleModal() {
+    setInfoIsOpen(!infoIsOpen);
+  }
 
   return (
       <div className='main h-100vh'>
@@ -39,11 +40,52 @@ const Sidebar = () => {
         <div className="container">
           <div className='row h-20vh bg-header'>
             <div className='header-shadow col'>
+
+              {/* INFO MODAL */}
               <div className='info row h-5vh'>
                 <div className='col align-r'>
-                <a><FaIcons.FaInfoCircle /></a>
+                <FaIcons.FaInfoCircle onClick={toggleModal}/>
                 </div>
               </div>
+              
+              <Modal
+                isOpen={infoIsOpen}
+                onRequestClose={toggleModal}
+                contentLabel="My dialog"
+                className="info-modal"
+                overlayClassName="overlay"
+                >
+                <div className='heading-modal row'>
+                  <div className='col-10'>
+                    <span>Panduan Penggunaan</span>
+                  </div>
+                  <div className='close-icon col-2' onClick={toggleModal}>
+                  <a><FaIcons.FaTimes /></a>
+                  </div>
+                </div>
+                <div className='body-modal url row'>
+                  <p>
+                    RTR Online dibuat untuk <span>menampilkan peta Rencana Tata Ruang (RTR)</span> yang dimiliki oleh Kementerian ATR/BPN.
+                  </p>
+                  <p>
+                    Peta RTR yang ada pada aplikasi ini merupakan <span>Produk legal dari Pemerintah Daerah. </span>
+                    Pada aplikasi ini tersedia peta RTR dalam berbagai tingkatan diantaranya yaitu: <span>RTRWN, RTR Pulau, RTR KSN, RTRW Provinsi, RTRW Kab/Kota dan RDTR</span>
+                  </p>
+                  
+                  <div className='submit-modal info col-12'>
+                  <input type='submit' value='Lihat Panduan'/>
+                  <input type='submit' value='Tampilkan Tutorial'/>
+                  </div>
+
+                </div>
+                <div className='bottom-modal url row'>
+                  <div className='submit-modal col-12'>
+                  <input type='submit' value='Tutup' onClick={toggleModal}/>
+                  </div>
+                </div>
+              </Modal>
+              {/* INFO MODAL END */}
+
               <div className='row h-10vh align-center-l'>
                 <div className='col h-8vh f-poppins'>
                   <div className='row h-5vh align-center-l'>
