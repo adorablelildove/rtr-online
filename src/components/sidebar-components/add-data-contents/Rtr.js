@@ -1,23 +1,26 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
-function Rtr() {
 
+export default ({handleChange, handleSubmit, post}) => {
   const [nasIsActive, setNasIsActive] = useState(true);
   const [daeIsActive, setDaeIsActive] = useState(false);
 
-  const [optionsOpen, setOpstionsOpen] = useState(false);
+  // WILAYAH
+  const [optionsWilayahOpen, setOpstionsWilayahOpen] = useState(false);
 
-  const selected = document.querySelector(".selected");
-  const optionsContainer = document.querySelector(".options-container");
-  const optionsList = document.querySelectorAll(".option");
+  const wilayahSelected = document.querySelector("#wilayah-selected");
+  const wilayahOptionsContainer = document.querySelector("#wilayah-options-container");
+  const wilayahOptionsList = document.querySelectorAll("#wilayah-option");
 
-  optionsList.forEach(o => {
-    o.addEventListener("click", () => {
-      selected.innerHTML = o.querySelector("label").innerHTML;
-      optionsContainer.classList.remove("active");
-      setOpstionsOpen(!optionsOpen);
+  wilayahOptionsList.forEach(wilayah => {
+    wilayah.addEventListener("click", () => {
+      wilayahSelected.innerHTML = wilayah.querySelector("#wilayah-label").innerHTML;
+      wilayahOptionsContainer.classList.remove("active");
+      setOpstionsWilayahOpen(!optionsWilayahOpen);
     });
   });
+
+  const provSum = "003_RTR_PROVINSI_PULAU_SUMATERA/_1000_PROVINSI_SUMATERA_PR_PERDA/";
 
   return (
     <div className='row'>
@@ -85,45 +88,22 @@ function Rtr() {
             <span>Pilih Wilayah</span>
           </div>
           <div className='select-box' >
-            <div className={optionsOpen ? 'options-container active' : 'options-container'}>
-              <div className='option'>
-                <input type='radio' class='radio' id='wilayah1' name='wilayah' />
-                <label for='wilayah1'>Wilayah 1</label>
-              </div>
-
-              <div className='option'>
-                <input type='radio' class='radio' id='wilayah2' name='wilayah' />
-                <label for='wilayah2'>Wilayah 2</label>
-              </div>
-
-              <div className='option'>
-                <input type='radio' class='radio' id='wilayah3' name='wilayah' />
-                <label for='wilayah3'>Wilayah 3</label>
-              </div>
-
-              <div className='option'>
-                <input type='radio' class='radio' id='wilayah4' name='wilayah' />
-                <label for='wilayah4'>Wilayah 4</label>
-              </div>
-
-              <div className='option'>
-                <input type='radio' class='radio' id='wilayah5' name='wilayah' />
-                <label for='wilayah5'>Wilayah 5</label>
-              </div>
-
-              <div className='option'>
-                <input type='radio' class='radio' id='wilayah6' name='wilayah' />
-                <label for='wilayah6'>Wilayah 6</label>
-              </div>
-
-              <div className='option'>
-                <input type='radio' class='radio' id='wilayah7' name='wilayah' />
-                <label for='wilayah7'>Wilayah 7</label>
+            <div className={optionsWilayahOpen ? 'options-container active' : 'options-container'} id='wilayah-options-container'>
+              <div className='option' id='wilayah-option'>
+                <input 
+                  type='radio' 
+                  class='radio' 
+                  id='wilayah1' 
+                  name='wilayah'
+                  value="003_RTR_PROVINSI_PULAU_SUMATERA/_1000_PROVINSI_SUMATERA_PR_PERDA/"
+                  onChange={handleChange}
+                />
+                <label for='wilayah1' id='wilayah-label'>Provinsi Sumatera</label>
               </div>
 
             </div>
 
-            <div className='s-selected' onClick={() => setOpstionsOpen(!optionsOpen)}>
+            <div className='s-selected' id='wilayah-selected' onClick={() => setOpstionsWilayahOpen(!optionsWilayahOpen)}>
               Pilih wilayah
             </div>
 
@@ -148,11 +128,10 @@ function Rtr() {
         </div>
 
         <div className='submit-section row'>
-          <input type='submit' value='Konfirmasi'/>
+          <input type='submit' value='Konfirmasi' onClick={handleSubmit}/>
         </div>
       </form>
     </div>
   )
-}
 
-export default Rtr
+}

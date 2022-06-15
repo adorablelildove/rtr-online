@@ -1,24 +1,90 @@
-import { Component } from "react";
-import {Map, GoogleApiWrapper} from 'google-maps-react'
+import React from 'react';
+import { Map } from '@esri/react-arcgis';
+import { loadModules } from 'esri-loader';
 
-class MapContainer extends Component{
-  render() {
-    return(
-      <Map  
-        google = {this.props.google}
-        style = {{width:"100%", height:"100%"}}
-        zoom = {10}
-        initialCenter = {
-          {
-            lat: -6.175110,
-            lng: 106.865036
-          }
-        }
-      />
+function MapContainer() {
+
+  const handleMapLoad = function (map, view) {
+    loadModules([
+      "esri/widgets/Search",
+    ]).then(([Search]) => 
+      {
+        const searchWidget = new Search({
+          view: view
+        });
+        view.ui.add(searchWidget, {
+          position: "top-right"
+        });
+      },
     );
-  }
+
+    loadModules([
+      "esri/widgets/BasemapGallery",
+    ]).then(([BasemapGallery]) => 
+      {
+        const basemapGallery = new BasemapGallery({
+          view: view,
+          container: document.createElement("div")
+        });
+        loadModules([
+          "esri/widgets/Expand"
+        ]).then(([Expand]) => 
+          {
+            const bgexpand = new Expand({
+              view: view,
+              content: basemapGallery
+            });
+            view.ui.add(bgexpand, {
+              position: "bottom-right"
+            });
+          },
+        );
+      },
+    );
+
+    loadModules([
+      "esri/widgets/Zoom",
+    ]).then(([Zoom]) => 
+      {
+        const zoom = new Zoom({
+          view: view
+        });
+        view.ui.add(zoom, {
+          position: "bottom-right"
+        });
+      },
+    );
+
+    loadModules([
+      "esri/layers/FeatureLayer",
+    ]).then(([FeatureLayer]) => 
+      {
+        const featureLayer = new FeatureLayer({
+          view: view,
+          url: "https://gistaru.atrbpn.go.id/arcgis/rest/services/003_RTR_PROVINSI_PULAU_SUMATERA/_1000_PROVINSI_SUMATERA_PR_PERDA/MapServer/0"
+        });
+        map.add(featureLayer);
+      },
+    );
+    
+  };
+
+  return (
+    <Map
+      className='map-view'
+      mapProperties={{ 
+        basemap: "topo-vector",}}
+      viewProperties={{ 
+        center: [106.865036, -6.175110],
+        ui: {
+          components: [ "attribution" ]
+        },
+        zoom: 5
+      }}
+      loaderOptions={{ version: "4.17", css: true }}
+      onLoad={handleMapLoad}
+    />
+  )
 }
 
-export default GoogleApiWrapper({
-  apiKey: "AIzaSyC6UV9ggCv3gh6RjryismRWjKVm7SkmSbg"
-})(MapContainer)
+export default MapContainer
